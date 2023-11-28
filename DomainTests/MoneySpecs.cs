@@ -86,4 +86,18 @@ public class MoneySpecs
         result.Should().Be(true);
     }
 
+    [Theory, AutoData]
+    public void Supports_bigger_operator(uint five)
+    {
+        //Arrange
+        var rightNumber = aValidMoney();
+        var leftNumber = new Money(rightNumber.Value + five);
+
+        //Act
+        bool result = leftNumber.Value > rightNumber.Value;
+
+        //Assert
+        result.Should().Be(true);
+    }
+
 }

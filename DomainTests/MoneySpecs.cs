@@ -79,7 +79,11 @@ public class MoneySpecs
         var leftNumber = aValidMoney();
         var rightNumber = new Money(leftNumber.Value + five);
 
+        //Act
+        bool result = leftNumber.Value < rightNumber.Value;
+
         //Assert
-        leftNumber.Value.Should().BeLessThan(rightNumber.Value);
+        result.Should().Be(true);
     }
+
 }

@@ -58,4 +58,17 @@ public class MoneySpecs
         .Value.Should().Be(five);
     }
 
+    [Fact]
+    public void Supports_addition()
+    {
+        //Arrange
+        var firstNumber = aValidMoney();
+        var secondNumber = aValidMoney();
+
+        //Act
+        (firstNumber + secondNumber)
+
+        //Assert
+        .Value.Should().Be(firstNumber.Value + secondNumber.Value);
+    }
 }

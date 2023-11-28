@@ -71,4 +71,15 @@ public class MoneySpecs
         //Assert
         .Value.Should().Be(firstNumber.Value + secondNumber.Value);
     }
+
+    [Theory, AutoData]
+    public void Supports_lower_operator(uint five)
+    {
+        //Arrange
+        var leftNumber = aValidMoney();
+        var rightNumber = new Money(leftNumber.Value + five);
+
+        //Assert
+        leftNumber.Value.Should().BeLessThan(rightNumber.Value);
+    }
 }

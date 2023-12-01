@@ -1,4 +1,6 @@
 
+using Services.Domain.Transaction;
+
 public enum TransferStatus
 {
     Commit,
@@ -21,15 +23,14 @@ public class Transaction
     protected Transaction(string id,
         DateTime date,
         string description,
-        string creditAccountId,
-        string debitAccountId,
+        TransactionParties transactionParties,
         Money amount)
     {
         Id = id;
         Date = date;
         Description = description;
-        CreditAccountId = creditAccountId;
-        DebitAccountId = debitAccountId;
+        CreditAccountId = transactionParties.CreditAccountId;
+        DebitAccountId = transactionParties.DebitAccountId;
         Amount = amount;
     }
 
@@ -37,15 +38,13 @@ public class Transaction
         string id,
         DateTime date,
         string description,
-        string creditAccountId,
-        string debitAccountId,
+        TransactionParties transactionParties,
         Money amount)
     => new Transaction(
         id,
         date,
         description,
-        creditAccountId,
-        debitAccountId,
+        transactionParties,
         amount
     );
 

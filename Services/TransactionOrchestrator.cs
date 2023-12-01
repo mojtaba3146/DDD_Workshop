@@ -1,4 +1,6 @@
-﻿namespace Services;
+﻿using Services.Domain.Transaction;
+
+namespace Services;
 
 public class TransactionOrchestrator
 {
@@ -10,9 +12,9 @@ public class TransactionOrchestrator
         this.transferService = transferService;
     }
 
-    public void DraftTransfer(string transactionId, string creditAccountId, string debitAccountId, decimal amount, DateTime transactionDate, string description)
+    public void DraftTransfer(string transactionId, TransactionParties transactionParties, decimal amount, DateTime transactionDate, string description)
     {
-        transactions.Add(Transaction.Draft(transactionId, transactionDate, description, creditAccountId, debitAccountId, amount));
+        transactions.Add(Transaction.Draft(transactionId, transactionDate, description, transactionParties, amount));
     }
 
     public void CommitTransfer(

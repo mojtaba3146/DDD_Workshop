@@ -1,11 +1,11 @@
 
-public class Accounts
+public class InMemoryAccounts : Accounts
 {
-    
+
     readonly List<Account> records = new List<Account>();
-    public Account? FindById(string id)
+    public Account? FindById(AccountId id)
     {
-        return records.FirstOrDefault(a => a.Id == id);
+        return records.FirstOrDefault(a => a.Id.Id == id.Id);
     }
 
     public void Update(Account account)
@@ -18,5 +18,4 @@ public class Accounts
     {
         records.Add(account);
     }
-    public void Clear() => records.Clear();
 }

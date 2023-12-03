@@ -3,9 +3,9 @@ using FluentAssertions;
 
 public class AccountOrchestratorSpec
 {
-    [Theory, AutoMoqData]
+    [Theory, AutoMoqDataAttributeWithPositiveDecimals]
     public void Opens_a_new_account(string accountId, decimal balance,
-        [Frozen] Accounts _,
+        [Frozen(Matching.ImplementedInterfaces)] InMemoryAccounts __,
         AccountQueries queries,
         AccountOrchestrator accountOrchestrator
     )

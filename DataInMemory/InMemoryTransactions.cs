@@ -1,13 +1,13 @@
 
 
-public class Transactions
+public class InMemoryTransactions : Transactions
 {
     public List<Transaction> records { get; set; } = new();
     public void Add(Transaction transaction)
     => records.Add(transaction);
 
-    public Transaction? FindById(string id)
-    => All().FirstOrDefault(tx => tx.Id == id);
+    public Transaction? FindById(TransactionId id)
+    => All().FirstOrDefault(tx => tx.Id.Id == id.Id);
 
     public IEnumerable<Transaction> All()
     => records;
